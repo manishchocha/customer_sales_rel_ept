@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	<!-- Form View -->
+	<record id="customer_sale_rel_view_ept" model="ir.ui.view">
+		<field name="name">Customer Sales Form</field>
+		<field name="model">customer.sale.rel.ept</field>
+		<field name="arch" type="xml">
+			<form name="arch" string="Customer Sales">
+				<sheet>
+					<header>
+						<button name="getProducts" string="Get Products" type="object"
+							class="btn-primary" />
+					</header>
+					<group colspan="4">
+						<group>
+								<field name="date"/>
+								<field name="sale_order"/>
+								<field name="customer" bg_color="red"/>
+						</group>
+						<group>
+								<field name="warehouse"/>
+								<field name="invoice_paid_amount"/>
+								<field name="invoice_remaining_amount"/>			
+						</group>
+					</group>
+					<notebook>
+						<page string="Order Lines" name="Order Line">
+							<field name="products">
+								<tree string="Customer Sale" create="false">
+									<field name="product_id" />
+									<field name="product_uom_qty" />
+									<field name="qty_delivered" />
+									<field name="qty_invoiced" />
+									<field name="price_unit" />
+									<field name="price_tax" />
+									<field name="price_subtotal" sum="total"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+		  	</form>
+		</field>
+	</record>
+	<!-- Tree View -->
+	<record id="customer_sale_rel_tree_view_ept" model="ir.ui.view">
+		<field name="name">Customer Sale Tree</field>
+		<field name="model">customer.sale.rel.ept</field>
+		<field name="arch" type="xml">
+			<tree string="Customer Sale"
+				colors="green:invoice_remaining_amount == 0;red:invoice_remaining_amount > 0">
+				<field name="sale_order" />
+				<field name="date" />
+				<field name="customer" />
+				<field name="warehouse" />
+				<field name="invoice_paid_amount" />
+				<field name="invoice_remaining_amount" />
+			</tree>
+		</field>
+	</record>
+	
+	<!-- Search View -->
+	<record id="customer_sale_rel_search_view_ept" model="ir.ui.view">
+		<field name="name">Customer Sale Search</field>
+		<field name="model">customer.sale.rel.ept</field>
+		<field name="arch" type="xml">
+			<search string="Search View">
+				<filter name="sale_order_set" string="Sale Order is True"
+					domain="[('sale_order','!=',False)]" />
+			</search>
+		</field>
+	</record>
+	</data>			
+</odoo>		

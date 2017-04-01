@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="customer_sale_rel_action_ept" model="ir.actions.act_window">
+			<field name="name">Customer Sale Relation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">customer.sale.rel.ept</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban</field>
+			<field name="context">{'search_default_sale_order_set':1}</field>
+			<field name="search_view_id" ref="customer_sale_rel_search_view_ept" />
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					<b>Create a new customer sale.</b>
+				</p>
+				<p>
+					<b>Step :1</b>
+					Click on "Create" Button.
+				</p>
+				<p>
+					<b>Step :2</b>
+					First Select Order.
+				</p>
+				<p>
+					<b>Step :3</b>
+					After Click on Button "Get Product."
+				</p>
+				<p>
+					<b>Step :4</b>
+					After you want to save then click on "Save".
+				</p>
+				<p>
+
+					<b>Step :5</b>
+					Otherwise "Discard" Button Click to discard this record
+				</p>
+			</field>
+		</record>	
+	<menuitem id="customer_sale_rel_menu_ept" action="customer_sale_rel_action_ept"
+			name="Customer Sales" />
+	</data>
+</odoo>
